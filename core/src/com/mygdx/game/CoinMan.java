@@ -4,6 +4,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -34,6 +35,7 @@ public class CoinMan extends ApplicationAdapter {
     ArrayList<Integer> coinYs = new ArrayList<>();
     ArrayList<Rectangle> coinRectangle = new ArrayList<>();
     Texture coin;
+    Music music;
     int coinCount;
     ArrayList<Integer> bombXs = new ArrayList<>();
     ArrayList<Integer> bombYs = new ArrayList<>();
@@ -57,6 +59,7 @@ public class CoinMan extends ApplicationAdapter {
         random = new Random();
         dizzy=new Texture("dizzy.png");
         game= new Texture("gameover2.jpg");
+        music = Gdx.audio.newMusic(Gdx.files.internal("gamesound2.wav"));
         font = new BitmapFont();
         font.setColor(Color.WHITE);
         font.getData().setScale(10);
@@ -82,6 +85,7 @@ public class CoinMan extends ApplicationAdapter {
         if (gameState == 1) {
             //game is live
             //for bomb
+            music.play();
             if (bombCount < 250) {
                 bombCount++;
             } else {
@@ -151,6 +155,7 @@ public class CoinMan extends ApplicationAdapter {
         if(gameState==2){
             batch.draw(dizzy,Gdx.graphics.getWidth() / (float) 2 - man[manState].getWidth() / (float) 2, manY);
             batch.draw(game,15, 900);
+            music.stop();
         }else{
             batch.draw(man[manState], Gdx.graphics.getWidth() / (float) 2 - man[manState].getWidth() / (float) 2, manY);
         }
