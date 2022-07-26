@@ -88,7 +88,7 @@ public class CoinMan extends ApplicationAdapter
         //bombSound = Gdx.audio.newMusic(Gdx.files.internal("bomb.mp3"));
 
         highFont= new BitmapFont();
-        highFont.setColor(Color.RED);
+        highFont.setColor(Color.GREEN);
         highFont.getData().setScale(7);
 
 
